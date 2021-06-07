@@ -1,0 +1,6 @@
+{
+  "backup_path":"D:\Backups\",
+  "backup_source_path":"D:\Programing\Current projects\",
+  "number_of_old_copies_kept":5,
+  "minimum_time_between_backups":3
+}
