@@ -1,5 +1,4 @@
 import time
-import sys
 import os
 import shutil
 import json
@@ -30,7 +29,7 @@ class OnMyWatch:
 class Handler(FileSystemEventHandler):
 
     @staticmethod
-    def on_any_event(event):
+    def on_any_event(_event):
         backup = Backup()
         if backup.check_time_last_backup():
             backup.create_new()
@@ -46,7 +45,7 @@ class Backup:
     def delete_old(self):
         _, folders, _ = next(os.walk(self.options["backup_path"]))
         if len(folders) > self.options["number_of_old_copies_kept"]:
-            the_oldest_folder = sorted(folders)[0]
+            the_oldest_folder = sorted(folders)[-1]
             shutil.rmtree(self.options["backup_path"] + the_oldest_folder)
 
     def check_time_last_backup(self):
